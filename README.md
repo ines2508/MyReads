@@ -8,7 +8,7 @@ Of course, you are free to start this project from scratch if you wish! Just be 
 
 To get started developing right away:
 
-* install all project dependencies with `yarn add`
+* install all project dependencies with `yarn global add create-react-app`
 * start the development server with `yarn start`
 
 ## What You're Getting

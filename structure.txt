@@ -1,0 +1,70 @@
+<Home>
+    <Header></Header>
+    <AllBooks></AllBooks>
+    <AddBook></AddBook>
+</Home>
+
+<Search>
+    <input>
+    <None></None>
+    <MySelect></MySelect>
+</Search>
+
+<JSONBooks></JSONBooks>
+
+<AllBooks>
+    <CurrentlyReading>
+        <Shelf></Shelf>
+    </CurrentlyReading>
+    <WantToRead>
+        <Shelf></Shelf>
+    </WantToRead>
+    <Read>
+        <Shelf></Shelf>
+    </Read>
+    <None>
+        <Shelf></Shelf> - hide
+    </None>
+</AllBooks>
+
+<Shelf>
+    <BookID></Book>
+</Shelf>
+
+<BookID>
+    <ID></ID>
+    <Picture />
+    <Select>
+        <p></p>
+        <CurrentShelf/>
+        <MoveBook/>
+    </Select>
+    <Title></Title>
+    <Author></Author>
+</BookID>
+
+<CurrentShelf/> 
+function checkShelf- checking indexOf in array AllBooks and its 4 arrays
+    <CurrentlyReading>
+    <WantToRead>
+    <Read>
+    <None>
+function rememberPosition 
+    remember indexOf BookID
+function showPosition in <CurrentShelf/> 
+
+<MoveBook/> - 
+    if (select !== CurrentShelf) {
+        MoveBook
+    } else {select == CurrentShelf}
+function removeFromCurrent 
+    remove from rememberPosition
+    add to new array
+    update rememberPosition
+
+
+    
+
+
+
+       
