@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import BookShelf from './BookShelf';
+import shelfValue from './Shelf';
 
 class MyReads extends Component {
     render() {
@@ -10,7 +11,7 @@ class MyReads extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                    <BookShelf/>
+                    <BookShelf shelf={shelfValue}/>
                     <BookShelf/>
                     <BookShelf/>
 
