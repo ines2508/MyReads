@@ -8,10 +8,12 @@ class Book extends Component {
     render() {
         return(
             <div className='book'>
-                    <BookCover className='book-top'></BookCover>             
-                    <BookShelfChanger className="book-shelf-changer"></BookShelfChanger>
-                    <BookTitle></BookTitle>
-                    <BookAuthor></BookAuthor>
+                <div className="book-top">
+                    <BookCover cover='picture'/>             
+                    <BookShelfChanger/>
+                </div>
+                    <BookTitle title='To Kill a Mockingbird'/>
+                    <BookAuthor author='Harper Lee'/>
             </div>
         )
     }
