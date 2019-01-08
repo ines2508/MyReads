@@ -4,14 +4,15 @@ import './App.css'
 
 /* COMPONENTS */
 
-import Book from './BookItem'
+import MyReads from './MyReads'
+
 
 class BooksApp extends Component {
 
   render() {
     return (
-        <div>
-          <Book></Book>
+        <div className="app">
+          <MyReads/>
         </div>
 
       
