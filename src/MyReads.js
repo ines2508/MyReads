@@ -12,8 +12,6 @@ class MyReads extends Component {
                 <div className="list-books-content">
                     <div>
                     <BookShelf shelf={shelfValue}/>
-                    <BookShelf/>
-                    <BookShelf/>
 
                     </div>
                 </div>

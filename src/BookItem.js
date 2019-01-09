@@ -7,11 +7,13 @@ import shelfValue from './Shelf';
 
 class Book extends Component {
     render() {
+        console.log('Book info ' + this.props.current)
+
         return(
             <div className='book'>
                 <div className="book-top">
                     <BookCover cover='picture'/>             
-                    <BookShelfChanger shelf={shelfValue}/>
+                    <BookShelfChanger showCurrent={this.props.current} shelf={shelfValue}/>
                 </div>
                     <BookTitle title='To Kill a Mockingbird'/>
                     <BookAuthor author='Harper Lee'/>
