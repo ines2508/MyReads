@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
+import BookGrid from './BooksGrid'
 
 class BookShelfChanger extends Component {
 
-    moveBook = (event) => (
-        console.log("Book was moved to " + event.target.value)
-)
+    moveBook = (event) => {
+        let newShelf = event.target.value;
+        console.log("Book was moved to " + newShelf)
+
+        return newShelf
+    }
 
     render() {
         console.log('This select ' + this.props.showCurrent)

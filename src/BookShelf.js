@@ -1,18 +1,19 @@
 import React, {Component} from 'react'
-import BookGrid from './BooksGrid'
+import BooksGrid from './BooksGrid'
 import shelfValue from './Shelf';
 
 class BookShelf extends Component {
-    state = {
-        shelfGrid:  shelfValue
-    }
+ //   state = {
+ //       shelfGrid:  shelfValue
+ //   }
     render() {
+        console.log(this.props.shelf[1].value)
 
         return(
-            this.state.shelfGrid.map( (shelfItem) => (
+            this.props.shelf.map( (shelfItem) => (
                 <div key={shelfItem.value} className="bookshelf">
                     <h2 className="bookshelf-title">{shelfItem.shelfName}</h2>
-                        <BookGrid key={shelfItem.value} currentShelf={shelfItem.value}/>
+                        <BooksGrid key={shelfItem.value} currentShelf={shelfItem.value}/>
                 </div>
             ))
             

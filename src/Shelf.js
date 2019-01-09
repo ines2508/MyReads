@@ -4,19 +4,19 @@ const shelfValue = [
 
     {
         "value":"currentlyReading",
-        "shelfName": "Currently Reading"
+        "shelfName": "Currently Reading",
     },
     {
         "value":"wantToRead",
-        "shelfName": "Want to Read"
+        "shelfName": "Want to Read",
     },
     {
         "value":"read",
-        "shelfName": "Read"
+        "shelfName": "Read",
     },
     {
         "value":"none",
-        "shelfName": "None"
+        "shelfName": "None",
     }
 ]
 

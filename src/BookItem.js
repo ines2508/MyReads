@@ -3,7 +3,8 @@ import BookCover from './BookTop'
 import BookShelfChanger from './BookShelfChanger'
 import BookTitle from './BookTitle'
 import BookAuthor from './BookAuthor'
-import shelfValue from './Shelf';
+import shelfValue from './Shelf'
+import BookGrid from './BooksGrid'
 
 class Book extends Component {
     render() {
