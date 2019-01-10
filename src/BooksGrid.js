@@ -2,36 +2,38 @@ import React, {Component} from 'react'
 import Book from './BookItem';
 import shelfValue from './Shelf';
 import BookShelfChanger from './BookShelfChanger'
+import * as BooksAPI from './BooksAPI'
 
 
 class BooksGrid extends Component {
 
     state = {
-     //  'position': shelfValue[1].value,
-       'position': shelfValue.value,
-
+        books: []
+   //    'id': '',
+    //    'position': shelfValue[1].value,
+      // 'position': shelfValue.value,
     }
-    newShelf = (shelfValue) => {
-        this.setState ((state) => ({
-            'position': this.moveBook
+
+    componentDidMount() {
+        BooksAPI.getAll().then((books) => this.setState ( {
+            books
         }))
     }
    
-
     render() {
-    //    console.log('Show position ' + this.state.position + " " + this.moveBook)
-        console.log('Show shelf ' + this.props.currentShelf)
 
         return(
 
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    
-                    <li><Book id='12' current={this.state.position}/></li>
-                    <li><Book current={
-                          (this.state.position === this.props.currentShelf) ? this.state.position : 'none'                        
-                        }/></li>
-                    <li><Book current={this.state.position}/></li>
+                    {this.state.books
+                    .filter( (book) => 
+                        (book.shelf === this.props.currentShelf))
+                    .map( (book) => (
+                        <li key={book.id}><Book key={book.id} bookInfo={book}
+                        current={book.shelf}/></li>
+                    ))}
+                   
                 </ol>
             </div>
         )

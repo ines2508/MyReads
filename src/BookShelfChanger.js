@@ -5,13 +5,13 @@ class BookShelfChanger extends Component {
 
     moveBook = (event) => {
         let newShelf = event.target.value;
-        console.log("Book was moved to " + newShelf)
+    //    console.log("Book was moved to " + newShelf)
 
         return newShelf
     }
 
     render() {
-        console.log('This select ' + this.props.showCurrent)
+    //    console.log('This select ' + this.props.showCurrent)
         
         return(
             <div className="book-shelf-changer">

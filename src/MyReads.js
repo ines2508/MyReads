@@ -1,10 +1,15 @@
 import React, {Component} from 'react'
 import BookShelf from './BookShelf';
 import shelfValue from './Shelf';
+import * as BooksAPI from './BooksAPI'
+
 
 class MyReads extends Component {
-    render() {
+
+    render() { 
+
         return(
+            
             <div className="list-books">
                 <div className="list-books-title">
                     <h1>MyReads</h1>
@@ -12,7 +17,6 @@ class MyReads extends Component {
                 <div className="list-books-content">
                     <div>
                     <BookShelf shelf={shelfValue}/>
-
                     </div>
                 </div>
             </div>
