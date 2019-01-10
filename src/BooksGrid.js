@@ -11,6 +11,8 @@ class BooksGrid extends Component {
         books: []
     }
 
+// Get all books from the server
+
     componentDidMount() {
         BooksAPI.getAll().then((books) => this.setState ( {
             books
@@ -19,15 +21,16 @@ class BooksGrid extends Component {
    
     render() {
 
+// Check if the book's shelf match "static" shelf and display the books        
         return(
 
             <div className="bookshelf-books">
                 <ol className="books-grid">
                     {this.state.books
-                    .filter( (book) => 
+                    .filter((book) => 
                         (book.shelf === this.props.currentShelf))
-                    .map( (book) => (
-                        <li key={book.id}><Book key={book.id} bookInfo={book}/></li>
+                    .map((book) => (
+                        <li key={book.id}><Book bookInfo={book}/></li>
                     ))}
                    
                 </ol>

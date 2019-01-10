@@ -10,6 +10,7 @@ class BookShelfChanger extends Component {
         this.setState({
             'position': event.target.value
         })
+        console.log('Move book to ' + event.target.value)
     }
 
     render() {

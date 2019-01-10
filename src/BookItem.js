@@ -18,9 +18,7 @@ class Book extends Component {
             <div className='book'>
                 <div className="book-top">
                     <BookCover cover={bookD.imageLinks.smallThumbnail}/>             
-                    <BookShelfChanger 
-                    shelfD={bookD} shelf={shelfValue}
-                    />
+                    <BookShelfChanger shelfD={bookD} shelf={shelfValue}/>
                 </div>
                     <BookTitle title={bookD.title}/>
                     <BookAuthor author={bookD.author}/>
