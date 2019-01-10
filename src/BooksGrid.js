@@ -9,9 +9,6 @@ class BooksGrid extends Component {
 
     state = {
         books: []
-   //    'id': '',
-    //    'position': shelfValue[1].value,
-      // 'position': shelfValue.value,
     }
 
     componentDidMount() {
@@ -30,8 +27,7 @@ class BooksGrid extends Component {
                     .filter( (book) => 
                         (book.shelf === this.props.currentShelf))
                     .map( (book) => (
-                        <li key={book.id}><Book key={book.id} bookInfo={book}
-                        current={book.shelf}/></li>
+                        <li key={book.id}><Book key={book.id} bookInfo={book}/></li>
                     ))}
                    
                 </ol>
