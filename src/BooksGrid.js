@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import Book from './BookItem';
-import shelfValue from './Shelf';
-import BookShelfChanger from './BookShelfChanger'
+//import shelfValue from './Shelf';
+// import BookShelfChanger from './BookShelfChanger'
 import * as BooksAPI from './BooksAPI'
+// import MyReads from './MyReads'
 
 
 class BooksGrid extends Component {
@@ -30,7 +31,9 @@ class BooksGrid extends Component {
                     .filter((book) => 
                         (book.shelf === this.props.currentShelf))
                     .map((book) => (
-                        <li key={book.id}><Book bookInfo={book}/></li>
+                        <li key={book.id}>
+                            <Book bookInfo={book}/>
+                        </li>
                     ))}
                    
                 </ol>

@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 //import * as BooksAPI from './BooksAPI'
+import shelfValue from './Shelf';
+
 import './App.css'
 
 /* COMPONENTS */
@@ -12,7 +14,7 @@ class BooksApp extends Component {
   render() {
     return (
         <div className="app">
-          <MyReads/>
+          <MyReads shelf={shelfValue}/>
         </div>
 
       
