@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 //import * as BooksAPI from './BooksAPI'
-import shelfValue from './Shelf';
+//import shelfValue from './Shelf';
 
 import './App.css'
 
@@ -14,7 +14,7 @@ class BooksApp extends Component {
   render() {
     return (
         <div className="app">
-          <MyReads shelf={shelfValue}/>
+          <MyReads/>
         </div>
 
       
