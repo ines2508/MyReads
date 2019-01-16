@@ -1,15 +1,43 @@
-import React from 'react'
-import Shelf from './Shelf'
-import AddBook from "./AddBook"
+import React, {Component} from 'react'
+import * as BooksAPI from '../src/BooksAPI'
+import Shelf from '../src/Shelf'
+import shelfValue from '../src/ListShelfs';
+import AddBook from "../src/AddBook"
 
-const MyReads = ({changePage, moveBook, books, shelfs, value}) => {
+class MyReads extends Component {
 
+    state = {
+        books: [],
+        shelfs: shelfValue,
+        newShelf: "",
+        value: ""
+    }
+
+// Get all books from the server to check existing shelfs
+
+    componentDidMount() {
+        BooksAPI.getAll().then((books) => this.setState ( {
+            books
+        }))
+    }
+
+// Move book to new shelf
+
+    moveBook = (book, shelf) => {
+
+        BooksAPI.update(book, shelf).then(response => {
+            BooksAPI.getAll().then(books => {this.setState({books})})
+        })
+    }
+  
+
+    render() { 
 
 // Make a list (without duplication) of the "server's" shelfs on which there are books
 
         let fullShelf = new Set([]);
 
-        books.map( (element) => (
+        this.state.books.map( (element) => (
                                            
             fullShelf.add(element.shelf)                        
         ))
@@ -27,7 +55,7 @@ const MyReads = ({changePage, moveBook, books, shelfs, value}) => {
 
                 <div className="list-books-content">
                     <div>  
-                            {shelfs
+                            {this.state.shelfs
 
                                 .filter((shelfItem) => 
                                     (fullShelf.has(shelfItem.value) && (shelfItem.value !== 'none')))
@@ -38,19 +66,20 @@ const MyReads = ({changePage, moveBook, books, shelfs, value}) => {
 
                                         <h2 className="bookshelf-title">{shelfItem.shelfName}</h2>
                                             <Shelf currentShelf={shelfItem.value}
-                                                    books={books}
-                                                    value={value}
-                                                    moveBook={moveBook}
+                                                    books={this.state.books}
+                                                    value={this.state.value}
+                                                    moveBook={this.moveBook}
                                             />
                   
                                     </div>       
                             ))}
                     </div>
                 </div>
-                    <AddBook changePage={changePage}/>
+                    <AddBook changePage={this.props.changePage}/>
+
             </div>
         )
-    
+    }
 }
 
 export default MyReads
