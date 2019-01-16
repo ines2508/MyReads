@@ -1,32 +1,30 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Book from './Book';
 
-class Shelf extends Component {
+const Shelf = ({books, currentShelf, value, moveBook}) => {
 
 // Check the position of the book and display book on that shelf
 
-    render() {
+  
 
         return(
-            <div className="bookshelf-books">
                 <ol className="books-grid">
 
-                    {this.props.books
+                    {books
                         .filter((book) => (
-                                book.shelf === this.props.currentShelf
+                                book.shelf === currentShelf
                                 ))
                         .map((book) => (
 
                             <li key={book.id}>
-                                <Book book={book} value={this.props.value} moveBook={this.props.moveBook}/>
+                                <Book book={book} value={value} moveBook={moveBook}/>
                             </li>
                         ))
                     }
                    
                 </ol>
-            </div>
         )
-    }
+    
 }
 
 

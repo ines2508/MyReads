@@ -20,8 +20,8 @@ class BooksApp extends Component {
     showSearchPage: false
   }
 
-  changePage = (value) => {
-    this.setState({showSearchPage: value})
+  changePage = (page) => {
+    this.setState({showSearchPage: page})
   }
 
   // Get all books from the server to check existing shelfs
@@ -45,7 +45,12 @@ class BooksApp extends Component {
     return (
         <div className="app">
         {this.state.showSearchPage ?
-          <Search  changePage={this.changePage}/> 
+          <Search  changePage={this.changePage}
+                    moveBook={this.moveBook}
+                    books={this.state.books}
+                    shelfs={this.state.shelfs}
+                    value={this.state.value}
+          /> 
           : <MyReads  changePage={this.changePage} 
                       moveBook={this.moveBook}
                       books={this.state.books}

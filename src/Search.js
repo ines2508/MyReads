@@ -1,21 +1,24 @@
-import React, {Component} from 'react'
+import React from 'react'
 import BackButton from './BackButton'
 import SearchInput from './SearchInput'
 import SearchResults from './SearchResults'
 
 
-class Search extends Component {
-    render() {
+const Search = ({moveBook, changePage, books, value}) => {
+   
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <BackButton changePage={this.props.changePage}/>
+                    <BackButton changePage={changePage}/>
                     <SearchInput/>
                 </div>
-                    <SearchResults/>
+                    <SearchResults books={books}
+                                   value={value}
+                                   moveBook={moveBook}
+                    />
             </div>
         )
-    }
+   
 }
 
 export default Search

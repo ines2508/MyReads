@@ -37,12 +37,13 @@ const MyReads = ({changePage, moveBook, books, shelfs, value}) => {
                                     <div key={shelfItem.value} className="bookshelf">
 
                                         <h2 className="bookshelf-title">{shelfItem.shelfName}</h2>
-                                            <Shelf currentShelf={shelfItem.value}
+                                        <div className="bookshelf-books">
+                                            <Shelf  currentShelf={shelfItem.value}
                                                     books={books}
                                                     value={value}
                                                     moveBook={moveBook}
                                             />
-                  
+                                        </div>
                                     </div>       
                             ))}
                     </div>

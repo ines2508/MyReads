@@ -1,15 +1,14 @@
-import React, {Component} from 'react'
+import React from 'react'
+import Shelf from './Shelf'
 
-class SearchResults extends Component {
-    render() {
+const SearchResults = (moveBook, books, value) => {
         return(
-            
+
             <div className="search-book-results">
-                <ol className="book-grid"></ol>
+                <Shelf moveBook={moveBook} books={books} value={value} currentShelf='none'/>
             </div>
 
         )
-    }
 }
 
 export default SearchResults
