@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import * as BooksAPI from './BooksAPI'
 import Shelf from './Shelf'
 import shelfValue from './ListShelfs';
+import AddBook from "./AddBook"
 
 class MyReads extends Component {
 
@@ -74,6 +75,7 @@ class MyReads extends Component {
                             ))}
                     </div>
                 </div>
+                    <AddBook changePage={this.props.changePage}/>
 
             </div>
         )
