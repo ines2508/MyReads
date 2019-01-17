@@ -43,25 +43,20 @@ class BooksApp extends Component {
   searchBook = (query, show, empty) => {
     console.log(empty)
     BooksAPI.search(query) 
-      .then((searchList) => {
-        searchList.forEach(book => {
-          book.shelf = "none"
-        })
-
-        this.setState({searchList})
- 
+      .then((searchList) => {      
+        this.setState({searchList})    
       })
-      .then(() => {this.setState({showResult: show})})
-       
+      .then(() => {this.setState({showResult: show})})     
   }
 
   // Move book to new shelf
 
   moveBook = (book, shelf) => {
 
-    BooksAPI.update(book, shelf).then(response => {
-        BooksAPI.getAll().then(books => {this.setState({books})})
-    }).then( () => {})
+    BooksAPI.update(book, shelf)
+        .then(response => {
+          BooksAPI.getAll().then(books => {this.setState({books})})
+        })      
   }
 
 
@@ -77,7 +72,7 @@ class BooksApp extends Component {
                     shelfs={this.state.shelfs}
                     value={this.state.value}
                   //  search={this.state.searchList}
-                    currentShelf={this.state.currentShelf}
+                    currentShelf={this.state.value}
           /> 
           : <MyReads  changePage={this.changePage} 
                       moveBook={this.moveBook}

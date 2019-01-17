@@ -4,7 +4,7 @@ import SearchInput from './SearchInput'
 import Shelf from './Shelf'
 
 
-const Search = ({searchBook, showResult, moveBook, search, changePage, books, value, currentShelf}) => {
+const Search = ({searchBook, showResult, moveBook, search, changePage, books, value, shelfs, currentShelf}) => {
     console.log(books)
         return (
             <div className="search-books">
@@ -17,7 +17,9 @@ const Search = ({searchBook, showResult, moveBook, search, changePage, books, va
                    
                    { showResult ?
                        <div className="search-book-results">
-                           <Shelf books={books} value={value} moveBook={moveBook} currentShelf={currentShelf ? currentShelf :"none"}/>              
+                           <Shelf books={books} value={value} moveBook={moveBook} 
+                           currentShelf={currentShelf ? value : shelfs[3].value}
+                           />              
                        </div>
                         : ""
                     }

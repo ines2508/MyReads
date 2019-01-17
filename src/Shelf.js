@@ -10,13 +10,17 @@ console.log(books)
                 <ol className="books-grid">
 
                     {books
-                        .filter((book) => (
-                                    book.shelf === currentShelf
-                                ))
+                        .filter((book) => ( 
+                                "shelf" in book ? book.shelf === currentShelf 
+                                : book.shelf = currentShelf
+                        ))
                         .map((book) => (
 
                             <li key={book.id}>
-                                <Book book={book} value={value} moveBook={moveBook}/>
+                                <Book book={book} 
+                                      value={value} 
+                                      moveBook={moveBook}
+                                />
                             </li>
                         ))
                     }

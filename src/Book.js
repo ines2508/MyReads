@@ -15,8 +15,14 @@ class Book extends Component {
         return(
             <div className='book'>
                 <div className="book-top">
-                    <BookCover book={book}/>             
-                    <BookShelfChanger book={book} value={this.props.value} moveBook={this.props.moveBook} shelf={shelfValue} />
+                    <BookCover 
+                        cover={"imageLinks" in book ? 
+                                book.imageLinks.smallThumbnail :
+                                "https://via.placeholder.com/300"}/>             
+                    <BookShelfChanger book={book} 
+                                      value={this.props.value} 
+                                      moveBook={this.props.moveBook} 
+                                      shelf={shelfValue} />
                 </div>
                     <BookTitle title={book.title ? book.title : "Unknown"}/>
                     <BookAuthor author={book.authors ? book.authors : ["Unknown"]}/>
