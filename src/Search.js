@@ -1,24 +1,36 @@
 import React from 'react'
 import BackButton from './BackButton'
 import SearchInput from './SearchInput'
-import SearchResults from './SearchResults'
+import Shelf from './Shelf'
 
 
-const Search = ({moveBook, changePage, books, value}) => {
-   
+const Search = ({searchBook, showResult, moveBook, search, changePage, books, value, currentShelf}) => {
+    console.log(books)
         return (
             <div className="search-books">
                 <div className="search-books-bar">
                     <BackButton changePage={changePage}/>
-                    <SearchInput/>
+                    <SearchInput searchBook={searchBook} showResult={showResult}/>
                 </div>
-                    <SearchResults books={books}
-                                   value={value}
-                                   moveBook={moveBook}
-                    />
+
+                   <div className="search-books-results">
+                   
+                   { showResult ?
+                       <div className="search-book-results">
+                           <Shelf books={books} value={value} moveBook={moveBook} currentShelf={currentShelf ? currentShelf :"none"}/>              
+                       </div>
+                        : ""
+                    }
+                      
+                   </div>       
             </div>
         )
+
    
 }
 
 export default Search
+
+
+
+ 

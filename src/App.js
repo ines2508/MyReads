@@ -15,16 +15,21 @@ class BooksApp extends Component {
 
   state={
     books: [],
+    searchList: [],
     shelfs: shelfValue,
+    currentShelf: "",
     value: "",
-    showSearchPage: false
+    showSearchPage: false,
+    showResult: false,
   }
+
+// Change page
 
   changePage = (page) => {
     this.setState({showSearchPage: page})
   }
 
-  // Get all books from the server to check existing shelfs
+// Get all books from the server to check existing shelfs
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => this.setState ( {
@@ -32,24 +37,47 @@ class BooksApp extends Component {
     }))
   }
 
-// Move book to new shelf
+
+// Search book
+
+  searchBook = (query, show, empty) => {
+    console.log(empty)
+    BooksAPI.search(query) 
+      .then((searchList) => {
+        searchList.forEach(book => {
+          book.shelf = "none"
+        })
+
+        this.setState({searchList})
+ 
+      })
+      .then(() => {this.setState({showResult: show})})
+       
+  }
+
+  // Move book to new shelf
 
   moveBook = (book, shelf) => {
 
     BooksAPI.update(book, shelf).then(response => {
         BooksAPI.getAll().then(books => {this.setState({books})})
-    })
+    }).then( () => {})
   }
+
 
   render() {
     return (
         <div className="app">
         {this.state.showSearchPage ?
-          <Search  changePage={this.changePage}
+          <Search   changePage={this.changePage}
+                    searchBook={this.searchBook}
                     moveBook={this.moveBook}
-                    books={this.state.books}
+                    showResult={this.state.showResult}
+                    books={this.state.searchList}
                     shelfs={this.state.shelfs}
                     value={this.state.value}
+                  //  search={this.state.searchList}
+                    currentShelf={this.state.currentShelf}
           /> 
           : <MyReads  changePage={this.changePage} 
                       moveBook={this.moveBook}

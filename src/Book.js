@@ -4,6 +4,7 @@ import BookShelfChanger from './Book/BookShelfChanger'
 import BookTitle from './Book/BookTitle'
 import BookAuthor from './Book/BookAuthor'
 import shelfValue from './ListShelfs'
+import BooksApp from './App';
 
 class Book extends Component {   
 
@@ -14,15 +15,18 @@ class Book extends Component {
         return(
             <div className='book'>
                 <div className="book-top">
-                    <BookCover cover={book.imageLinks.smallThumbnail}/>             
+                    <BookCover book={book}/>             
                     <BookShelfChanger book={book} value={this.props.value} moveBook={this.props.moveBook} shelf={shelfValue} />
                 </div>
-                    <BookTitle title={book.title}/>
-                    <BookAuthor author={book.authors}/>
+                    <BookTitle title={book.title ? book.title : "Unknown"}/>
+                    <BookAuthor author={book.authors ? book.authors : ["Unknown"]}/>
             </div>
         )
     }      
 }
 
 export default Book
+
+                     
+
 

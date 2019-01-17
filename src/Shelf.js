@@ -1,18 +1,17 @@
 import React from 'react'
 import Book from './Book';
 
-const Shelf = ({books, currentShelf, value, moveBook}) => {
+const Shelf = ({books, search, currentShelf, value, moveBook}) => {
 
 // Check the position of the book and display book on that shelf
-
-  
+console.log(books)
 
         return(
                 <ol className="books-grid">
 
                     {books
                         .filter((book) => (
-                                book.shelf === currentShelf
+                                    book.shelf === currentShelf
                                 ))
                         .map((book) => (
 

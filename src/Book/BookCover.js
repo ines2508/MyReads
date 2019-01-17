@@ -1,10 +1,10 @@
 import React from 'react'
 
-const BookCover = ({cover}) => {
+const BookCover = ({book}) => {
    
         return( 
                 <div className="book-cover" style={{ width: 128, height: 193, 
-                     backgroundImage: `url(${cover ? cover : "https://via.placeholder.com/150"}`
+                     backgroundImage: `url(${book.imageLinks.smallThumbnail ? book.imageLinks.smallThumbnail : "https://via.placeholder.com/150"}`
                      }}>
                 </div>   
         )
