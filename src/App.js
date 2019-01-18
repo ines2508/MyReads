@@ -14,6 +14,11 @@ class BooksApp extends Component {
   state={
     books: [],
     searchList: [],
+
+    // I want to store here one book from BookAPI.get()
+    // and change it after the map in Shelf is runing
+    bookId: "",
+
     shelfs: shelfValue,
     currentShelf: "",
     value: "",
@@ -30,16 +35,16 @@ class BooksApp extends Component {
 // Get all books from the server to check existing shelfs
 
   componentDidMount() {
-    BooksAPI.getAll().then((books) => this.setState ( {
-        books
-    })).catch( (err) => ( console.log("Didn't get all books " + err)))
+    BooksAPI.getAll()
+    .then((books) => this.setState ({books}))
+    .catch( (err) => ( console.log("Didn't get all books " + err)))
   }
 
   // Move book to new shelf
 
-  moveBook = (book, shelf) => {
+  moveBook = (book, newShelf) => {
    
-    BooksAPI.update(book, shelf)
+    BooksAPI.update(book, newShelf)
         .then(response => {
           BooksAPI.getAll()
           .then((books) => {this.setState({books})})
@@ -48,8 +53,21 @@ class BooksApp extends Component {
           console.log("Was unable to move the book " + err)
         ))
 
-  console.log(`New shelf ${shelf} + old shelf ${book.shelf}`)    
+  console.log(`New shelf ${newShelf} + old shelf ${book.newShelf} + ${book.id}`)    
+  }
 
+// Return book from id 
+// Don't know where to put it or it should be something like componentDidMount
+
+  searchBookId = (event, id, book) => {
+    BooksAPI.get(id)
+    .then((bookId) => {this.setState({bookId})})
+    // searchList should also be updated but how? 
+    // since it is only one value
+    // and something like this.setState() with 
+    // searchList[searchList.indexOf(book)].shelf 
+    // doesn't work
+    .catch(err => (console.log("Didn't find book " + err)))
   }
   
 // Search book
@@ -74,12 +92,14 @@ class BooksApp extends Component {
         {this.state.showSearchPage ?
           <Search   changePage={this.changePage}
                     searchBook={this.searchBook}
+                    searchBookId={this.searchBookId}
                     moveBook={this.moveBook}
                     showResult={this.state.showResult}
                     books={this.state.books}
                     searchList={this.state.searchList}
                     shelfs={this.state.shelfs}
                     value={this.state.value}
+                    bookId={this.state.bookId}
                     currentShelf={this.state.currentShelf}
           /> 
           : <MyReads  changePage={this.changePage} 
@@ -87,13 +107,23 @@ class BooksApp extends Component {
                       books={this.state.books}
                       shelfs={this.state.shelfs}
                       value={this.state.value}
+                      searchBookId={this.searchBookId}
+                      searchList={this.state.searchList}
             />
         }
-        </div>
-
-      
+        </div>      
     )
   }
 }
 
 export default BooksApp
+
+// Other questions
+// ListShelfs.js has list of shelfs, those are raw data, how to store it?
+// in a React Function ?
+// json?
+
+// Other TODO:
+// - more error checking for input
+// - React Router
+// - better picture for placeholder
