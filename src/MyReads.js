@@ -28,17 +28,18 @@ const MyReads = ({changePage, moveBook, books, shelfs, value}) => {
                 <div className="list-books-content">
                     <div>  
                             {shelfs
-
                                 .filter((shelfItem) => 
-                                    (fullShelf.has(shelfItem.value) && (shelfItem.value !== 'none')))
-
+                                   (fullShelf.has(shelfItem.value) 
+                                    && (shelfItem.value !== 'none')
+                                ))
+                               
                                 .map( (shelfItem) => (
 
                                     <div key={shelfItem.value} className="bookshelf">
 
                                         <h2 className="bookshelf-title">{shelfItem.shelfName}</h2>
                                         <div className="bookshelf-books">
-                                            <Shelf  currentShelf={shelfItem.value}
+                                            <Shelf  currentShelf={shelfItem.value ? shelfItem.value : "none"}
                                                     books={books}
                                                     value={value}
                                                     moveBook={moveBook}

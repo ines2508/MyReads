@@ -22,10 +22,11 @@ class Book extends Component {
                     <BookShelfChanger book={book} 
                                       value={this.props.value} 
                                       moveBook={this.props.moveBook} 
-                                      shelf={shelfValue} />
+                                      shelf={shelfValue} 
+                                      />
                 </div>
-                    <BookTitle title={book.title ? book.title : "Unknown"}/>
-                    <BookAuthor author={book.authors ? book.authors : ["Unknown"]}/>
+                    <BookTitle title={"title" in book ? book.title : "Unknown"}/>
+                    <BookAuthor author={"authors" in book ? book.authors : ["Unknown"]}/>
             </div>
         )
     }      
