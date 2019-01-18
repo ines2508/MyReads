@@ -13,7 +13,9 @@ class Book extends Component {
         const book = this.props.book;
         console.log(this.props.bookId)
         return(
-            <div className='book'>
+            <div className='book'
+
+            >
                 <div className="book-top">
                     <BookCover 
                         cover={"imageLinks" in book ? 
