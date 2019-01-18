@@ -2,7 +2,7 @@ import React from 'react'
 import Shelf from './Shelf'
 import AddBook from "./AddBook"
 
-const MyReads = ({changePage, moveBook, books, shelfs, value}) => {
+const MyReads = ({changePage, moveBook, searchList, searchBookId, books, shelfs, value}) => {
 
 
 // Make a list (without duplication) of the "server's" shelfs on which there are books
@@ -35,7 +35,8 @@ const MyReads = ({changePage, moveBook, books, shelfs, value}) => {
                                
                                 .map( (shelfItem) => (
 
-                                    <div key={shelfItem.value} className="bookshelf">
+                                    <div key={shelfItem.value} 
+                                         className="bookshelf">
 
                                         <h2 className="bookshelf-title">{shelfItem.shelfName}</h2>
                                         <div className="bookshelf-books">
@@ -43,6 +44,8 @@ const MyReads = ({changePage, moveBook, books, shelfs, value}) => {
                                                     books={books}
                                                     value={value}
                                                     moveBook={moveBook}
+                                                    searchBookId={searchBookId}
+                                                  //  searchList={searchList}
                                             />
                                         </div>
                                     </div>       

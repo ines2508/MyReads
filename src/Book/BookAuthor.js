@@ -6,7 +6,8 @@ const BookAuthor =({author}) => {
             <div className="book-authors">
 
                  {author.map((author) => 
-                    <span key={author}>{author ? author : "Unknown"}<br/></span> 
+                    <span key={author}>{author ? author : "Unknown"}<br/>
+                    </span> 
                  )}
                  
             </div>
