@@ -13,7 +13,9 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
                             ( !("shelf" in book) ? 
                             ( bookId.shelf ? bookId.shelf : book.shelf="none") 
                             : book.shelf)
-                            ===  (book.shelf === "none" ? (currentShelf = "none") : currentShelf)
+                        //    ===  (book.shelf === "none" ? (currentShelf = "none") : currentShelf)
+                           ===  currentShelf
+
                         ))
                         
                         // At this point all books from searchList has the same shelf = "none"
@@ -25,22 +27,22 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
                         // and then return this book from BookAPI.get
                         // if there isn't such a book return unknownBook
 
-                        unknownBook
+                     //   unknownBook
 
                         // 1. solution
-                            //    (unknownBook.filter(
-                            //     searchBookId(unknownBook.id, unknownBook)
-                            //     )) ? bookId : unknownBook
+                              //  (unknownBook.filter(
+                              //   searchBookId(unknownBook.id, unknownBook)
+                               //  )) ? bookId : unknownBook
                             
 
                         // 2. solution 
-                           //     bookId ? bookId : 
-                           //     unknownBook
+                                bookId ? bookId : 
+                                unknownBook
                          
 
                         // 3. solution   
 
-                           //    (books[unknownBook].id) === unknownBook.id ? books[unknownBook] :
+                            //   (books[unknownBook].id) === unknownBook.id ? books[unknownBook] :
                            //    unknownBook
 
                           
@@ -69,7 +71,7 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
                             <li key={book.id} 
                             
                         //   where to put searchBookId ?
-                        //   onChange={ event => searchBookId(event, book.id, book)}
+                          onChange={ event => searchBookId(event, book.id, book)}
                             >
                                 <Book book={book}
                                       onChange={searchBookId}

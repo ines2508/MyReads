@@ -24,6 +24,7 @@ class BooksApp extends Component {
     value: "",
     showSearchPage: false,
     showResult: false,
+    query: ""
   }
 
 // Change page
@@ -72,18 +73,23 @@ class BooksApp extends Component {
   
 // Search book
 
-  searchBook = (query, empty) => {
+  searchBook = (query, empty, list) => {
+
+    this.setState({query: query.trim()})
+
     console.log(empty)
     BooksAPI.search(query) 
       .then((searchList) => {      
-        this.setState({searchList})    
+        this.setState({searchList})
+        this.setState({showResult: true})    
       })
       .then(
-        (empty > 0) ?
-        (() => {this.setState({showResult: true})}) : (
-          () => {this.setState({showResult: false})}
-        ))
-      .catch( (err) => ( console.log("Didn't find the book " + err)))     
+        (empty < 0) 
+        ? (() => {this.setState({showResult: false})}) 
+        : (() => {this.setState({showResult: true})})
+      )
+      .catch( (err) => ( () => {this.setState({showResult: false})})
+      ) 
   }
 
   render() {
@@ -101,6 +107,8 @@ class BooksApp extends Component {
                     value={this.state.value}
                     bookId={this.state.bookId}
                     currentShelf={this.state.currentShelf}
+                    query={this.state.query}
+                    closeResult={this.closeResult}
           /> 
           : <MyReads  changePage={this.changePage} 
                       moveBook={this.moveBook}

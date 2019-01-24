@@ -4,7 +4,7 @@ import SearchInput from './SearchInput'
 import Shelf from './Shelf'
 
 
-const Search = ({searchBook, bookId, searchBookId, showResult, moveBook, changePage, books, searchList, value, shelfs, currentShelf}) => {
+const Search = ({searchBook, closeResult, query, bookId, searchBookId, showResult, moveBook, changePage, books, searchList, value, shelfs, currentShelf}) => {
         
     console.log(bookId)
     return (
@@ -12,24 +12,29 @@ const Search = ({searchBook, bookId, searchBookId, showResult, moveBook, changeP
                 <div className="search-books-bar">
                     <BackButton changePage={changePage}/>
                     <SearchInput searchBook={searchBook} 
-                                 showResult={showResult}/>
+                                 showResult={showResult}
+                                 searchList={searchList}
+                                 query={query}
+                    />
+
                 </div>
 
                    <div className="search-books-results">
                    
-                   { showResult ?
-                       <div className="search-book-results">
-                           <Shelf 
-                                books={books}
-                                searchList={searchList}
-                                searchBookId={searchBookId} 
-                                value={value}
-                                bookId={bookId} 
-                                moveBook={moveBook} 
-                                currentShelf={currentShelf}
-                           />              
-                       </div>
-                        : ""
+                    { showResult ?
+                            <div className="search-book-results">
+                                <Shelf 
+                                    books={books}
+                                    searchList={searchList}
+                                    searchBookId={searchBookId} 
+                                    value={value}
+                                    bookId={bookId} 
+                                    moveBook={moveBook} 
+                                    // Books get default shelf "none"
+                                    currentShelf={!currentShelf ? currentShelf="none" : currentShelf}
+                                />              
+                            </div>
+                        : ""                              
                     }
                       
                    </div>       
