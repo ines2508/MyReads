@@ -74,21 +74,21 @@ class BooksApp extends Component {
 // Search book
 
   searchBook = (query, empty, list) => {
-
     this.setState({query: query.trim()})
 
     console.log(empty)
     BooksAPI.search(query) 
-      .then((searchList) => {      
-        this.setState({searchList})
-        this.setState({showResult: true})    
+      .then((searchList) => {  
+        (searchList.length > 0)
+        ? (this.setState({searchList}) && this.setState({showResult: true}))
+        : (this.setState({searchList: []}) && this.setState({showResult: false}))
       })
       .then(
-        (empty < 0) 
-        ? (() => {this.setState({showResult: false})}) 
-        : (() => {this.setState({showResult: true})})
+        (empty > 0) 
+        ? this.setState({showResult: true}) 
+        : (this.setState({showResult: false}) && this.setState({searchList: []}))
       )
-      .catch( (err) => ( () => {this.setState({showResult: false})})
+      .catch( (err) => ( this.setState({showResult: false}))
       ) 
   }
 
