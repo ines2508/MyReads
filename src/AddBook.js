@@ -5,7 +5,10 @@ const AddBook = ({changePage}) => {
         return(
 
         <div className="open-search">
-            <button onClick={() => changePage(true)}>Add a book</button>
+            <a href="#search">
+                <button onClick={() => changePage(true)}
+                >Add a book</button>
+            </a>    
         </div>
         )
     

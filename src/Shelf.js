@@ -63,6 +63,9 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
                             //   (books.indexOf(unknownBook)) > 0 ?
                             //   books[books.indexOf(unknownBook)] 
                             //   : unknownBook
+
+                        // 7. solution
+                        //   (searchList.lenght > 0) ? (bookId) : unknownBook
                             
                         ))
 
@@ -71,14 +74,17 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
                             <li key={book.id} 
                             
                         //   where to put searchBookId ?
-                          onChange={ event => searchBookId(event, book.id, book)}
+                        onChange={ event => searchBookId(event, book.id, book)}
+
                             >
                                 <Book book={book}
                                       onChange={searchBookId}
                                       searchBookId={searchBookId}
                                       bookId={bookId}
                                       value={value} 
-                                      moveBook={moveBook}/>
+                                      moveBook={moveBook}
+
+                                      />
                             </li>
                         ))
                     }

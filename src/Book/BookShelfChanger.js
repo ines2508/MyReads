@@ -10,12 +10,13 @@ const BookShelfChanger = ({book, bookId, searchBookId, shelf, value, moveBook}) 
                    // Putting here bookId.shelf doesn't work
                    // value ? bookId.shelf : book.shelf
 
-                    value ? value : book.shelf
+                //    value ? value : (!book.shelf ? bookId.shelf : book.shelf)
+                book.shelf ? book.shelf : bookId.shelf
                 } 
                     onChange={ event => moveBook(book, event.target.value)}
                         
                     // where to put searchBookId ?
-                    // onChange={ event => searchBookId(event, book.id, book)}
+                 //    onChange={ event => searchBookId(event, book.id, book)}
                     // if I put it here, after click all books from Search change into this one
                 >
                     <option value="move" disabled>Move to...</option>

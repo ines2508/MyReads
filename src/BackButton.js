@@ -4,8 +4,8 @@ const BackButton = ({changePage}) => {
 
         
         return(
-            <button className="close-search" 
-                    onClick={() => changePage(false)}>Close</button>
+                <a href="#main"><button className="close-search" 
+                    onClick={() => changePage(false)}>Close</button></a>
         )
 
 }

@@ -88,7 +88,7 @@ class BooksApp extends Component {
         ? this.setState({showResult: true}) 
         : (this.setState({showResult: false}) && this.setState({searchList: []}))
       )
-      .catch( (err) => ( this.setState({showResult: false}))
+      .catch( (err) => ( this.setState({showResult: false}) && console.log("There is nothing to show " + err))
       ) 
   }
 
