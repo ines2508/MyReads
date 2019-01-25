@@ -13,15 +13,9 @@ import shelfValue from './ListShelfs';
 class BooksApp extends Component {
 
   state={
-    books: [], // +App
-   // searchList: [], // +Search
-
-    // I want to store here one book from BookAPI.get()
-    // and change it after the map in Shelf is runing
-  //  bookId: "", // +Search
-
+    books: [],
     shelfs: shelfValue,
-    currentShelf: "",
+  //  currentShelf: "",
     value: "",
   }
 
@@ -62,6 +56,7 @@ class BooksApp extends Component {
                     books={this.state.books}
                     shelfs={this.state.shelfs}
                     value={this.state.value}
+                  //  currentShelf={this.state.currentShelf}
           />
         )}/>
 
@@ -71,7 +66,7 @@ class BooksApp extends Component {
                    books={this.state.books}
                    shelfs={this.state.shelfs}
                    value={this.state.value}
-                   currentShelf={this.state.currentShelf}
+                //   currentShelf={this.state.currentShelf}
          />
         )}/>
    

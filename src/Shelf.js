@@ -22,9 +22,9 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
 
     
                          //   ( !("shelf" in book) ? book.shelf="none" : book.shelf)
-                            ===  (book.shelf === "none" ? (currentShelf = "none") : currentShelf)
+                        //    ===  (book.shelf === "none" ? (currentShelf = "none") : currentShelf)
 
-                        //    === currentShelf
+                            === currentShelf
                         ))
                         
                         // At this point all books from searchList has the same shelf = "none"

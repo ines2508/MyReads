@@ -15,6 +15,7 @@ class Search extends Component {
         bookId: "", // +Search
         query: "",
         showResult: false,
+        currentShelf: "none"
     }
 
     searchBookId = (event, id, book) => { // +Search
@@ -72,6 +73,8 @@ class Search extends Component {
                    
                     { this.state.showResult ?
                             <div className="search-book-results">
+
+                         
                                 <Shelf 
                                     books={this.props.books}
                                     searchList={this.state.searchList}
@@ -80,12 +83,12 @@ class Search extends Component {
                                     bookId={this.state.bookId} 
                                     moveBook={this.props.moveBook} 
                                     // Books get default shelf "none"
-                                    // currentShelf={this.props.currentShelf}
+                                    currentShelf={this.state.currentShelf}
 
                                    //  currentShelf={"none"}
                                 //     currentShelf={!currentShelf ? currentShelf="none" : currentShelf}
 
-                                />              
+                                />             
                             </div>
                         : ""                              
                     }
