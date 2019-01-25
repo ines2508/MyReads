@@ -10,12 +10,21 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
 
                     {(searchList ? searchList : books)
                         .filter((book) => (
-                            ( !("shelf" in book) ? 
-                            ( bookId.shelf ? bookId.shelf : book.shelf="none") 
-                            : book.shelf)
-                        //    ===  (book.shelf === "none" ? (currentShelf = "none") : currentShelf)
-                           ===  currentShelf
 
+
+                          //  (books[books.indexOf(book)]
+                          //  ? books[books.indexOf(book)].shelf 
+                          //  : book.shelf='none')
+
+                            (!books[books.indexOf(book)]
+                            ? book.shelf='none'
+                            : books[books.indexOf(book)].shelf )
+
+    
+                         //   ( !("shelf" in book) ? book.shelf="none" : book.shelf)
+                            ===  (book.shelf === "none" ? (currentShelf = "none") : currentShelf)
+
+                        //    === currentShelf
                         ))
                         
                         // At this point all books from searchList has the same shelf = "none"
@@ -36,8 +45,8 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
                             
 
                         // 2. solution 
-                                bookId ? bookId : 
-                                unknownBook
+                             //   bookId ? bookId : 
+                             //   unknownBook
                          
 
                         // 3. solution   
@@ -66,7 +75,18 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
 
                         // 7. solution
                         //   (searchList.lenght > 0) ? (bookId) : unknownBook
-                            
+
+
+                        // 8. solution
+
+                      //  (books[books.indexOf(unknownBook)]
+                      //  ? books[books.indexOf(unknownBook)] 
+                      //  : unknownBook)
+
+                       // 9. solution 
+
+                            unknownBook
+
                         ))
 
                         .map((book) => (
@@ -74,17 +94,16 @@ const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, mo
                             <li key={book.id} 
                             
                         //   where to put searchBookId ?
-                        onChange={ event => searchBookId(event, book.id, book)}
+                      //  onChange={ event => searchBookId(event, book.id, book)}
 
                             >
                                 <Book book={book}
                                       onChange={searchBookId}
-                                      searchBookId={searchBookId}
-                                      bookId={bookId}
+                                    //  searchBookId={searchBookId}
+                                    //  bookId={bookId}
                                       value={value} 
                                       moveBook={moveBook}
-
-                                      />
+                                />
                             </li>
                         ))
                     }

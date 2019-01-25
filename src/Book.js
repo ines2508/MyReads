@@ -22,11 +22,11 @@ class Book extends Component {
                                 book.imageLinks.smallThumbnail :
                                 "https://via.placeholder.com/300"}/>             
                     <BookShelfChanger book={book} 
-                                      bookId={this.props.bookId} 
+                                    //  bookId={this.props.bookId} 
                                       value={this.props.value} 
                                       moveBook={this.props.moveBook} 
                                       shelf={shelfValue}
-                                      searchBookId={this.props.searchBookId} 
+                                    //  searchBookId={this.props.searchBookId} 
                     />
                 </div>
                     <BookTitle title={"title" in book ? book.title : "Unknown"}/>

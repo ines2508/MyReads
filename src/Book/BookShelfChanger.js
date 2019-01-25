@@ -6,12 +6,12 @@ const BookShelfChanger = ({book, bookId, searchBookId, shelf, value, moveBook}) 
             <div className="book-shelf-changer"
             >
                 <select value={
-
+                    value ? value : book.shelf
                    // Putting here bookId.shelf doesn't work
                    // value ? bookId.shelf : book.shelf
 
                 //    value ? value : (!book.shelf ? bookId.shelf : book.shelf)
-                book.shelf ? book.shelf : bookId.shelf
+              //  book.shelf ? book.shelf : bookId.shelf
                 } 
                     onChange={ event => moveBook(book, event.target.value)}
                         
