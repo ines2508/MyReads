@@ -1,11 +1,15 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-const BackButton = ({changePage}) => {
+
+const BackButton = () => {
 
         
-        return(
-                <a href="#main"><button className="close-search" 
-                    onClick={() => changePage(false)}>Close</button></a>
+    return(
+        <Link to="/">
+            <button className="close-search" >Close
+            </button>
+        </Link>
         )
 
 }

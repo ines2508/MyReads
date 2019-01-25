@@ -4,13 +4,13 @@ import SearchInput from './SearchInput'
 import Shelf from './Shelf'
 
 
-const Search = ({searchBook, closeResult, query, bookId, searchBookId, showResult, moveBook, changePage, books, searchList, value, shelfs, currentShelf}) => {
+const Search = ({searchBook, closeResult, query, bookId, searchBookId, showResult, moveBook, books, searchList, value, shelfs, currentShelf}) => {
         
     console.log(bookId)
     return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <BackButton changePage={changePage}/>
+                    <BackButton/>
                     <SearchInput searchBook={searchBook} 
                                  showResult={showResult}
                                  searchList={searchList}

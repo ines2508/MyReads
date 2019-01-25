@@ -1,14 +1,14 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-const AddBook = ({changePage}) => {
+const AddBook = () => {
     
         return(
 
         <div className="open-search">
-            <a href="#search">
-                <button onClick={() => changePage(true)}
-                >Add a book</button>
-            </a>    
+            <Link to="/search">
+                <button>Add a book</button>
+            </Link>    
         </div>
         )
     

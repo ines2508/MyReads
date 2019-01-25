@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Route} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 
 import './App.css'
@@ -22,15 +23,8 @@ class BooksApp extends Component {
     shelfs: shelfValue,
     currentShelf: "",
     value: "",
-    showSearchPage: false,
     showResult: false,
     query: ""
-  }
-
-// Change page
-
-  changePage = (page) => {
-    this.setState({showSearchPage: page})
   }
 
 // Get all books from the server to check existing shelfs
@@ -95,30 +89,37 @@ class BooksApp extends Component {
   render() {
     return (
         <div className="app">
-        {this.state.showSearchPage ?
-          <Search   changePage={this.changePage}
-                    searchBook={this.searchBook}
-                    searchBookId={this.searchBookId}
+         <Route exact path='/' render={ () => (
+          <MyReads  
                     moveBook={this.moveBook}
-                    showResult={this.state.showResult}
                     books={this.state.books}
-                    searchList={this.state.searchList}
                     shelfs={this.state.shelfs}
                     value={this.state.value}
-                    bookId={this.state.bookId}
-                    currentShelf={this.state.currentShelf}
-                    query={this.state.query}
-                    closeResult={this.closeResult}
-          /> 
-          : <MyReads  changePage={this.changePage} 
-                      moveBook={this.moveBook}
-                      books={this.state.books}
-                      shelfs={this.state.shelfs}
-                      value={this.state.value}
-                      searchBookId={this.searchBookId}
-                      searchList={this.state.searchList}
-            />
-        }
+                    searchBookId={this.searchBookId}
+                    searchList={this.state.searchList}
+          />
+        )}/>
+
+        <Route path="/search" render={ () => (
+          <Search  
+                   searchBook={this.searchBook}
+                   searchBookId={this.searchBookId}
+                   moveBook={this.moveBook}
+                   showResult={this.state.showResult}
+                   books={this.state.books}
+                   searchList={this.state.searchList}
+                   shelfs={this.state.shelfs}
+                   value={this.state.value}
+                   bookId={this.state.bookId}
+                   currentShelf={this.state.currentShelf}
+                   query={this.state.query}
+                   closeResult={this.closeResult}
+         />
+        )}/>
+   
+       
+ 
+        
         </div>      
     )
   }
@@ -132,6 +133,4 @@ export default BooksApp
 // json?
 
 // Other TODO:
-// - more error checking for input
-// - React Router
 // - better picture for placeholder
