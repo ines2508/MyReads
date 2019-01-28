@@ -15,21 +15,24 @@ class BooksApp extends Component {
   state={
     books: [],
     shelfs: shelfValue,
-  //  currentShelf: "",
-    value: "",
+    currentShelf: "",
+    selectedValue: ""
   }
+
 
 // Get all books from the server to check existing shelfs
 
-  componentDidMount() { // +App
+  componentDidMount() {
+
     BooksAPI.getAll()
     .then((books) => this.setState ({books}))
     .catch( (err) => ( console.log("Didn't get all books " + err)))
   }
 
+
   // Move book to new shelf
 
-  moveBook = (book, newShelf) => { // +App
+  moveBook = (book, newShelf) => {
    
     BooksAPI.update(book, newShelf)
         .then(response => {
@@ -40,39 +43,32 @@ class BooksApp extends Component {
           console.log("Was unable to move the book " + err)
         ))
 
-  console.log(`New shelf ${newShelf} + old shelf ${book.newShelf} + ${book.id}`)    
-  }
+  //  this.setState({selectedValue: newShelf})
 
-// Return book from id 
-// Don't know where to put it or it should be something like componentDidMount
+  console.log(`New shelf ${newShelf} + old shelf ${book.shelf} + ${book.id}`)    
+  }
 
 
   render() {
     return (
         <div className="app">
-         <Route exact path='/' render={ () => (
-          <MyReads  
-                    moveBook={this.moveBook}
-                    books={this.state.books}
-                    shelfs={this.state.shelfs}
-                    value={this.state.value}
-                  //  currentShelf={this.state.currentShelf}
-          />
-        )}/>
+          <Route exact path='/' render={ () => (
+              <MyReads  
+                        moveBook={this.moveBook}
+                        books={this.state.books}
+                        shelfs={this.state.shelfs}
+                        selectedValue={this.state.selectedValue}
+              />
+          )}/>
 
-        <Route path="/search" render={ () => (
-          <Search  
-                   moveBook={this.moveBook}
-                   books={this.state.books}
-                   shelfs={this.state.shelfs}
-                   value={this.state.value}
-                //   currentShelf={this.state.currentShelf}
-         />
-        )}/>
-   
-       
- 
-        
+          <Route path="/search" render={ () => (
+              <Search  
+                      moveBook={this.moveBook}
+                      books={this.state.books}
+                      shelfs={this.state.shelfs}
+                      selectedValue={this.state.selectedValue}
+            />
+          )}/>
         </div>      
     )
   }
@@ -80,10 +76,4 @@ class BooksApp extends Component {
 
 export default BooksApp
 
-// Other questions
-// ListShelfs.js has list of shelfs, those are raw data, how to store it?
-// in a React Function ?
-// json?
 
-// Other TODO:
-// - better picture for placeholder

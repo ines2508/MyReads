@@ -2,7 +2,7 @@ import React from 'react'
 import Shelf from './Shelf'
 import AddBook from "./AddBook"
 
-const MyReads = ({changePage, moveBook, searchList, searchBookId, books, shelfs, value}) => {
+const MyReads = ({changePage, moveBook, selectedValue, books, shelfs}) => {
 
 
 // Make a list (without duplication) of the "server's" shelfs on which there are books
@@ -13,7 +13,6 @@ const MyReads = ({changePage, moveBook, searchList, searchBookId, books, shelfs,
                                            
             fullShelf.add(element.shelf)                        
         ))
-
             
         return(
             
@@ -42,10 +41,8 @@ const MyReads = ({changePage, moveBook, searchList, searchBookId, books, shelfs,
                                         <div className="bookshelf-books">
                                             <Shelf  currentShelf={shelfItem.value ? shelfItem.value : "none"}
                                                     books={books}
-                                                    value={value}
                                                     moveBook={moveBook}
-                                                    searchBookId={searchBookId}
-                                                  //  searchList={searchList}
+                                                    selectedValue={selectedValue}
                                             />
                                         </div>
                                     </div>       

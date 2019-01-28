@@ -8,33 +8,18 @@ import Shelf from './Shelf'
 class Search extends Component {
 
     state={
-        searchList: [], // +Search
-    
-        // I want to store here one book from BookAPI.get()
-        // and change it after the map in Shelf is runing
-        bookId: "", // +Search
+        searchList: [],
         query: "",
         showResult: false,
-        currentShelf: "none"
     }
 
-    searchBookId = (event, id, book) => { // +Search
-        BooksAPI.get(id)
-        .then((bookId) => {this.setState({bookId})})
-        // searchList should also be updated but how? 
-        // since it is only one value
-        // and something like this.setState() with 
-        // searchList[searchList.indexOf(book)].shelf 
-        // doesn't work
-        .catch(err => (console.log("Didn't find book " + err)))
-      }
       
-    // Search book
+// Search book and show the results
     
-      searchBook = (query, empty, list) => { // +Search
+      searchBook = (query, empty) => {
+
         this.setState({query: query.trim()})
     
-        console.log(empty)
         BooksAPI.search(query) 
           .then((searchList) => {  
             (searchList.length > 0)
@@ -52,11 +37,7 @@ class Search extends Component {
     
     
     render() {
-//= ({searchBook, closeResult, query, bookId, searchBookId, showResult, moveBook, books, searchList, value, shelfs, currentShelf}) => {
-        
-//    console.log(bookId)
 
-    const currentShelf = this.props.currentShelf;
         return (
             <div className="search-books">
                 <div className="search-books-bar">
@@ -73,21 +54,11 @@ class Search extends Component {
                    
                     { this.state.showResult ?
                             <div className="search-book-results">
-
-                         
                                 <Shelf 
                                     books={this.props.books}
                                     searchList={this.state.searchList}
-                                    searchBookId={this.state.searchBookId} 
-                                    value={this.props.value}
-                                    bookId={this.state.bookId} 
                                     moveBook={this.props.moveBook} 
-                                    // Books get default shelf "none"
-                                    currentShelf={this.state.currentShelf}
-
-                                   //  currentShelf={"none"}
-                                //     currentShelf={!currentShelf ? currentShelf="none" : currentShelf}
-
+                                    selectedValue={this.props.selectedValue}
                                 />             
                             </div>
                         : ""                              
@@ -96,8 +67,6 @@ class Search extends Component {
                    </div>       
             </div>
         )
-
-   
     }
 }
 

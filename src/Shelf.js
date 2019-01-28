@@ -1,108 +1,45 @@
 import React from 'react'
 import Book from './Book';
 
-const Shelf = ({books, bookId, searchList, searchBookId, currentShelf, value, moveBook, noneShelf}) => {
+const Shelf = ({books, searchList, selectedValue, currentShelf, moveBook}) => {
+
+// Show different shelf if book from searchList is in books
+
+    function returnShelf(book, books) {
+
+        if (books.filter((unknownBook) => book.id === unknownBook.id).length !== 0) {
+            
+            return books.filter((unknownBook) => book.id === unknownBook.id)[0].shelf;
+        
+        } else {
+            
+            return 'none';
+        }
+    } 
 
 
-// Check the position of the book and display book on that shelf
+// Display book from books on accurate shelf
+
         return(
                 <ol className="books-grid">
 
-                    {(searchList ? searchList : books)
-                        .filter((book) => (
-
-
-                          //  (books[books.indexOf(book)]
-                          //  ? books[books.indexOf(book)].shelf 
-                          //  : book.shelf='none')
-
-                            (!books[books.indexOf(book)]
-                            ? book.shelf='none'
-                            : books[books.indexOf(book)].shelf )
-
-    
-                         //   ( !("shelf" in book) ? book.shelf="none" : book.shelf)
-                        //    ===  (book.shelf === "none" ? (currentShelf = "none") : currentShelf)
-
-                            === currentShelf
-                        ))
-                        
-                        // At this point all books from searchList has the same shelf = "none"
-
-                        .map( (unknownBook, index, array) => (
-
-                        // This function was suppose to check if the book from searchList
-                        // has already shelf (with the BookAPI.get(id))
-                        // and then return this book from BookAPI.get
-                        // if there isn't such a book return unknownBook
-
-                     //   unknownBook
-
-                        // 1. solution
-                              //  (unknownBook.filter(
-                              //   searchBookId(unknownBook.id, unknownBook)
-                               //  )) ? bookId : unknownBook
-                            
-
-                        // 2. solution 
-                             //   bookId ? bookId : 
-                             //   unknownBook
-                         
-
-                        // 3. solution   
-
-                            //   (books[unknownBook].id) === unknownBook.id ? books[unknownBook] :
-                           //    unknownBook
-
-                          
-                        // 4. solution
-                           
-                            //   ((unknownBook) => searchBookId(unknownBook.id)) ?
-                            //   (bookId) : unknownBook
-
-
-                        // 5.solution       
-
-                            //   (books.indexOf(unknownBook)).id === unknownBook.id ?
-                            //   books[books.indexOf(myBook)] 
-                            //   : unknownBook
-    
-                        // 6. solution       
-
-                            //   (books.indexOf(unknownBook)) > 0 ?
-                            //   books[books.indexOf(unknownBook)] 
-                            //   : unknownBook
-
-                        // 7. solution
-                        //   (searchList.lenght > 0) ? (bookId) : unknownBook
-
-
-                        // 8. solution
-
-                      //  (books[books.indexOf(unknownBook)]
-                      //  ? books[books.indexOf(unknownBook)] 
-                      //  : unknownBook)
-
-                       // 9. solution 
-
-                            unknownBook
-
-                        ))
+                    {   (searchList 
+                        ?   searchList
+                    
+                        :   (books.filter((book) => (
+                                ( book.shelf  === currentShelf)
+                            )))
+                        )
 
                         .map((book) => (
 
-                            <li key={book.id} 
-                            
-                        //   where to put searchBookId ?
-                      //  onChange={ event => searchBookId(event, book.id, book)}
-
-                            >
+                            <li key={book.id} >
                                 <Book book={book}
-                                      onChange={searchBookId}
-                                    //  searchBookId={searchBookId}
-                                    //  bookId={bookId}
-                                      value={value} 
+                                      books={books}
+                                      searchList={searchList}
                                       moveBook={moveBook}
+                                      selectedValue={selectedValue}
+                                      shelfValue={returnShelf(book, books)}
                                 />
                             </li>
                         ))

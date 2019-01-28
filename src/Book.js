@@ -4,14 +4,13 @@ import BookShelfChanger from './Book/BookShelfChanger'
 import BookTitle from './Book/BookTitle'
 import BookAuthor from './Book/BookAuthor'
 import shelfValue from './ListShelfs'
-import BooksApp from './App';
 
 class Book extends Component {   
 
     render() {
 
         const book = this.props.book;
-        console.log(this.props.bookId)
+
         return(
             <div className='book'
 
@@ -21,12 +20,11 @@ class Book extends Component {
                         cover={"imageLinks" in book ? 
                                 book.imageLinks.smallThumbnail :
                                 "https://via.placeholder.com/300"}/>             
-                    <BookShelfChanger book={book} 
-                                    //  bookId={this.props.bookId} 
-                                      value={this.props.value} 
+                    <BookShelfChanger book={book}
                                       moveBook={this.props.moveBook} 
                                       shelf={shelfValue}
-                                    //  searchBookId={this.props.searchBookId} 
+                                      selectedValue={this.props.selectedValue}
+                                      shelfValue={this.props.shelfValue}
                     />
                 </div>
                     <BookTitle title={"title" in book ? book.title : "Unknown"}/>

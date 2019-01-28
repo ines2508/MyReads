@@ -1,34 +1,31 @@
 import React from 'react'
 
-const BookShelfChanger = ({book, bookId, searchBookId, shelf, value, moveBook}) => {
+const BookShelfChanger = ({book, selectedValue, shelfValue, shelf, moveBook}) => {
 
         return(
             <div className="book-shelf-changer"
             >
-                <select value={
-                    value ? value : book.shelf
-                   // Putting here bookId.shelf doesn't work
-                   // value ? bookId.shelf : book.shelf
-
-                //    value ? value : (!book.shelf ? bookId.shelf : book.shelf)
-              //  book.shelf ? book.shelf : bookId.shelf
-                } 
-                    onChange={ event => moveBook(book, event.target.value)}
+                <select 
+                
+                    value={
+                        selectedValue ?  selectedValue : shelfValue 
+                    } 
+                    
+                    onChange={ event => (moveBook(book, event.target.value))
+                    }
                         
-                    // where to put searchBookId ?
-                 //    onChange={ event => searchBookId(event, book.id, book)}
-                    // if I put it here, after click all books from Search change into this one
                 >
                     <option value="move" disabled>Move to...</option>
 
                     {shelf.map( (element) => (
 
-                         <option key={element.value} 
-                                 value={element.value}       
+                        <option key={element.value} 
+                                value={element.value}
+                                label={element.label}       
                          >
                             {element.shelfName}
                          
-                         </option>
+                        </option>
                         )      
                     )}
                 </select>  

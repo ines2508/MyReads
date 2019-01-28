@@ -184,6 +184,11 @@ button:active {
   cursor: pointer;
 }
 
+.book-shelf-changer option:checked {
+  background-color: lightgrey;
+  font-weight: bold
+}
+
 /* book cover */
 
 .book-cover {
