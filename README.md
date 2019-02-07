@@ -1,92 +1,59 @@
-# MyReads Project
+# Start 
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+To start the project open terminal and write:
+yarn start
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+# API
 
-## TL;DR
+The aim of this project is to show the books from API and select them on the right shelf.
 
-To get started developing right away:
+There are four shelves to choose from: Currently Reading, Want to Read, Read and none. 
 
-* install all project dependencies with `yarn global add create-react-app`
-* start the development server with `yarn start`
+The displaying of the books from API is error free since the default values are attached to book objects and input validation is present.
 
-## What You're Getting
-```bash
-├── CONTRIBUTING.md
-├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
-└── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
-```
+# Screens 
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+The project consists of two screens. 
+The React Router DOM is used to switch between the screens thanks to two buttons. One with the green plus at the bottom of the page on MyReads and the arrow near the input in Search.
 
-## Backend Server
+## MY READS screen 
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+First screen shows My Reads with the shelves on which the user can move the book.
 
-* [`getAll`](#getall)
-* [`update`](#update)
-* [`search`](#search)
+Updating the content is via componentDidMount with the BookAPI.getAll defined in App.js and with the event onChange attached to selected lists with green arrow in BookShelfChanger.js
 
-### `getAll`
 
-Method Signature:
+### Shelves
 
-```js
-getAll()
-```
+The shelves are defined in the array in ListShelves.js so it is easy to add or remove the shelf without jumping throw the project to update it.
 
-* Returns a Promise which resolves to a JSON object containing a collection of book objects.
-* This collection represents the books currently in the bookshelves in your app.
+Only the "None" shelf has the default value of hide in MyReads.
 
-### `update`
+If the shelf is empty it will not be displayed in MyReads but the user can easily add the book to it.
 
-Method Signature:
+### Move the Book
 
-```js
-update(book, shelf)
-```
+To move the book user needs to click the arrow. After clicking, the lists of shelves show up. 
 
-* book: `<Object>` containing at minimum an `id` attribute
-* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
-* Returns a Promise which resolves to a JSON object containing the response data of the POST request
+After choosing the shelf the function moveBook is invoked. This function update the API with the new Shelf position and return all books with getAll.
 
-### `search`
 
-Method Signature:
+## SEARCH screen
 
-```js
-search(query)
-```
+The input collects the query with trimming them at the start of the line so there are no errors.
 
-* query: `<String>`
-* Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
-* These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
+### Show the results
 
-## Important
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
+The results are display only when the input is not empty and the update to API function return not empty array.
 
-## Create React App
+Displaying the results is made by function searchBook which update the state of array searchList and showResult. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+Showing the results is based on reuse the code from MyReads for Shelf and Book.
 
-## Contributing
+The books from Search API don't have the key-value pair for the shelf so they get default value as "none" and only the books which are in BooksAPI.getAll get their own data.
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+### Keywords to search
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+Keywords to search are gathered in SEARCH_TERMS.md
+
+

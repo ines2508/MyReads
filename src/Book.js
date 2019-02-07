@@ -19,7 +19,8 @@ class Book extends Component {
                     <BookCover 
                         cover={"imageLinks" in book ? 
                                 book.imageLinks.smallThumbnail :
-                                "https://via.placeholder.com/300"}/>             
+                                './icons/cover.jpg'
+                            }/>             
                     <BookShelfChanger book={book}
                                       moveBook={this.props.moveBook} 
                                       shelf={shelfValue}

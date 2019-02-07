@@ -42,7 +42,6 @@ class BooksApp extends Component {
         .catch( (err) => (
           console.log("Was unable to move the book " + err)
         ))
-
   }
 
 
