@@ -9,7 +9,7 @@ class Search extends Component {
 
     state={
         searchList: [],
-        query: "",
+        query: " ",
         showResult: false,
     }
 
@@ -18,7 +18,7 @@ class Search extends Component {
     
       searchBook = (query, empty) => {
 
-        this.setState({query: query.trim()})
+            this.setState({query: query.trimStart()})        
     
         BooksAPI.search(query) 
           .then((searchList) => {  

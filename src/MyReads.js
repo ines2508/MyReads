@@ -5,7 +5,7 @@ import AddBook from "./AddBook"
 const MyReads = ({changePage, moveBook, selectedValue, books, shelfs}) => {
 
 
-// Make a list (without duplication) of the "server's" shelfs on which there are books
+// Make a list (without duplication) of the "server's" shelves on which there are books
 
         let fullShelf = new Set([]);
 
@@ -16,7 +16,7 @@ const MyReads = ({changePage, moveBook, selectedValue, books, shelfs}) => {
             
         return(
             
-// Filter "static" shelfs and display only thoses shelfs which aren't empty
+// Filter "static" shelves and display only thoses shelves which aren't empty
 
             <div className="list-books">
 

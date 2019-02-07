@@ -9,7 +9,8 @@ const BookShelfChanger = ({book, selectedValue, shelfValue, shelf, moveBook}) =>
                 
                     value={
                         selectedValue ?  selectedValue : shelfValue 
-                    } 
+                    }
+                    name = {selectedValue} 
                     
                     onChange={ event => (moveBook(book, event.target.value))
                     }

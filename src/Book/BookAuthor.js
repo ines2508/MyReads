@@ -15,5 +15,3 @@ const BookAuthor =({author}) => {
 }
 
 export default BookAuthor
-
-// {author[0]}

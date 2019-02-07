@@ -7,7 +7,7 @@ const SearchInput = ({searchBook, query, searchList}) => {
                 <input type="text" 
                        placeholder="Search by title or author"
                        value={query} 
-                       onChange={event => {searchBook(event.target.value.trim(), event.target.value.length)}}/>
+                       onChange={event => {searchBook(event.target.value.trimStart(), event.target.value.length)}}/>
             </div>
         )
     

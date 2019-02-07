@@ -3,7 +3,7 @@ import BookCover from './Book/BookCover'
 import BookShelfChanger from './Book/BookShelfChanger'
 import BookTitle from './Book/BookTitle'
 import BookAuthor from './Book/BookAuthor'
-import shelfValue from './ListShelfs'
+import shelfValue from './ListShelves'
 
 class Book extends Component {   
 

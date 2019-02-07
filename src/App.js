@@ -8,7 +8,7 @@ import './App.css'
 
 import Search from './Search'
 import MyReads from './MyReads'
-import shelfValue from './ListShelfs';
+import shelfValue from './ListShelves';
 
 class BooksApp extends Component {
 
@@ -20,7 +20,7 @@ class BooksApp extends Component {
   }
 
 
-// Get all books from the server to check existing shelfs
+// Get all books from the server to check existing shelves
 
   componentDidMount() {
 
@@ -43,9 +43,6 @@ class BooksApp extends Component {
           console.log("Was unable to move the book " + err)
         ))
 
-  //  this.setState({selectedValue: newShelf})
-
-  console.log(`New shelf ${newShelf} + old shelf ${book.shelf} + ${book.id}`)    
   }
 
 
